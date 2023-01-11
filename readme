@@ -1,0 +1,54 @@
+The workflow
+============
+
+0. Remove or backup "output/" directory if it exists 
+
+   $ rm -rf output/ 
+
+1. Create the file that contains the ids of all users
+
+   $ sh/population.sh 
+
+2. Generate activities
+
+   $ sh/activities.sh
+
+3. Generate initial situation for Day 0
+
+   $ sh/init.sh
+
+4. Simulate infections for n days
+
+   $ sh/simulate.sh n
+
+
+
+
+Directory of murdasp
+====================
+
+.
+├── awk
+│   ├── act_infect.awk        # used by ``infections.sh''
+│   ├── infection.awk         # used by ``infections.sh''
+│   ├── init_infect.awk       # generates initial distribution of infections; used by ``init.sh''
+│   ├── interact.awk          # used by ``infections.sh''
+│   └── process.awk           # used by ``activities.sh''
+├── data
+│   └── output_events.xml.gz
+├── output
+│   ├── interactions
+│   │   ├── education.txt
+│   │   ├── home.txt
+│   │   ├── leisure.txt
+│   │   ├── primary.txt
+│   │   ├── shop.txt
+│   │   └── work.txt
+│   └── population
+│       └── ids.csv             # contains all the IDs in the population; created by "population.sh" script
+└── sh
+    ├── activities.sh           # creates the interaction files in ``output/interactions''
+    ├── init.sh                 # creates an initial distribution of the infected persons
+    ├── pandemic.sh             # ??
+    └── population.sh           # create the "ids.csv" file from events file
+
